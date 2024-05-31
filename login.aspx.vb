@@ -1,4 +1,4 @@
-﻿Imports System.Data.SqlClient
+Imports System.Data.SqlClient
 Imports System.Data
 Imports System.Web
 Partial Class login
@@ -14,7 +14,7 @@ Partial Class login
         Using conexao As New SqlConnection(ConnString)
             conexao.Open()
 
-            Dim query As String = "SELECT COUNT(1) from contato WHERE email=@email AND senha=@senha"
+            Dim query As String = "SELECT COUNT(1) from Usuario WHERE email=@email AND senha=@senha"
 
             Using comando As New SqlCommand(query, conexao)
                 comando.Parameters.AddWithValue("@email", txtEmail.Text)
@@ -23,7 +23,7 @@ Partial Class login
                 Dim count As Integer = Convert.ToInt32(comando.ExecuteScalar())
 
                 If count = 1 Then
-                    Dim sql As String = "SELECT idCadastro FROM contato WHERE email=@email"
+                    Dim sql As String = "SELECT IDUsuario FROM Usuario WHERE email=@email"
                     comando.CommandText = sql
                     Dim ID As Integer = Convert.ToInt32(comando.ExecuteScalar())
                     Session("UserID") = ID
@@ -32,7 +32,7 @@ Partial Class login
 
                     Response.Redirect("default.aspx")
                 Else
-                    lblMensagem.Text = "Email ou senha incorretos!"
+                    lblMensagem.Text = "<br>Email ou senha incorretos!"
                 End If
 
 
