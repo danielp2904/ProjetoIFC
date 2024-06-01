@@ -38,7 +38,7 @@ Partial Class forum
                         Dim AssuntoEmail As String = txtAssunto.Text
                         Dim MensagemEmail As String = String.Format("Nome: {0} <br /> Email: {1} <br /> Instituição: {2} <br /> Campus: {3} <br /> Cidade: {4} <br /> Curso: {5} <br /> Mensagem: {6}", nome, email, instituicao, campus, cidade, curso, txtMensagem.Text)
 
-                        EnviarEmail.SendEmail(AssuntoEmail, MensagemEmail, email)
+                        EnviarEmail.SendEmail(AssuntoEmail, MensagemEmail, emailProjeto)
 
                     End If
 
