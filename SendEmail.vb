@@ -7,9 +7,9 @@ Public Class SendEmail
 
         objEnvio.Port = 587
         objEnvio.Host = "smtp.armazemdc.inf.br"
-        objEnvio.Credentials = New Net.NetworkCredential("daniel@inovea.io", "fTli1K0MUzWl8BQuC5WC")
+        objEnvio.Credentials = New Net.NetworkCredential("email", "senha")
 
-        objEmail.From = New MailAddress("daniel@inovea.io")
+        objEmail.From = New MailAddress("email")
         objEmail.Subject = Subject
         objEmail.Body = Body
         objEmail.To.Add(Recipient)
