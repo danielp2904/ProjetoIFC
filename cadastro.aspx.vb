@@ -19,7 +19,7 @@ Partial Class _Default
                 (@nome, @email, @curso, @senha, @instituicao, @cidade, @campus)]]>.Value
 
             Try
-                EnviarEmail.SendEmail("IF para todos", "Seu cadastro foi realizado com sucesso, seja bem vindo!")
+                EnviarEmail.SendEmail("IF para todos", "Seu cadastro foi realizado com sucesso, seja bem vindo!", txtEmail.Text)
                 adapter.InsertCommand = New SqlCommand(query, conexao)
                 adapter.InsertCommand.Parameters.AddWithValue("@nome", txtNome.Text)
                 adapter.InsertCommand.Parameters.AddWithValue("@email", txtEmail.Text)
