@@ -1,7 +1,7 @@
 Imports Microsoft.VisualBasic
 Imports System.Net.Mail
 Public Class SendEmail
-    Public Sub SendEmail(Subject As String, Body As String)
+    Public Sub SendEmail(Subject As String, Body As String, Recipient As String)
         Dim objEnvio As New SmtpClient
         Dim objEmail As New MailMessage()
 
@@ -12,7 +12,7 @@ Public Class SendEmail
         objEmail.From = New MailAddress("daniel@inovea.io")
         objEmail.Subject = Subject
         objEmail.Body = Body
-        objEmail.To.Add("daniel@inovea.io")
+        objEmail.To.Add(Recipient)
 
         objEmail.IsBodyHtml = True
 
