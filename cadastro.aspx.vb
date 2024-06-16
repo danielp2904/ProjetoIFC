@@ -6,7 +6,7 @@ Partial Class _Default
     Inherits System.Web.UI.Page
     Dim EnviarEmail As New SendEmail
 
-    Protected Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Protected Sub BtnCadastrar_Click(sender As Object, e As EventArgs) Handles BtnCadastrar.Click
         Dim ConnString As String = ConfigurationManager.ConnectionStrings("form").ConnectionString
         Using conexao As New SqlConnection(ConnString)
             conexao.Open()
@@ -19,15 +19,15 @@ Partial Class _Default
                 (@nome, @email, @curso, @senha, @instituicao, @cidade, @campus)]]>.Value
 
             Try
-                EnviarEmail.SendEmail("IF para todos", "Seu cadastro foi realizado com sucesso, seja bem vindo!", txtEmail.Text)
+                EnviarEmail.SendEmail("IF para todos", "Seu cadastro foi realizado com sucesso, seja bem vindo!", txtEmail.Value)
                 adapter.InsertCommand = New SqlCommand(query, conexao)
-                adapter.InsertCommand.Parameters.AddWithValue("@nome", txtNome.Text)
-                adapter.InsertCommand.Parameters.AddWithValue("@email", txtEmail.Text)
-                adapter.InsertCommand.Parameters.AddWithValue("@curso", txtCurso.Text)
-                adapter.InsertCommand.Parameters.AddWithValue("@instituicao", txtInstituicao.Text)
-                adapter.InsertCommand.Parameters.AddWithValue("@cidade", txtCidade.Text)
-                adapter.InsertCommand.Parameters.AddWithValue("@campus", txtCampus.Text)
-                adapter.InsertCommand.Parameters.AddWithValue("@senha", txtSenha.Text)
+                adapter.InsertCommand.Parameters.AddWithValue("@nome", txtNome.Value)
+                adapter.InsertCommand.Parameters.AddWithValue("@email", txtEmail.Value)
+                adapter.InsertCommand.Parameters.AddWithValue("@curso", txtCurso.Value)
+                adapter.InsertCommand.Parameters.AddWithValue("@instituicao", txtInstituicao.Value)
+                adapter.InsertCommand.Parameters.AddWithValue("@cidade", txtCidade.Value)
+                adapter.InsertCommand.Parameters.AddWithValue("@campus", txtCampus.Value)
+                adapter.InsertCommand.Parameters.AddWithValue("@senha", txtSenha.Value)
                 adapter.InsertCommand.ExecuteNonQuery()
 
                 Response.Redirect("login.aspx")
