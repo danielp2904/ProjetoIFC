@@ -18,8 +18,8 @@ Partial Class forum
                 Dim adapter As New SqlDataAdapter
                 Try
                     adapter.InsertCommand = New SqlCommand("INSERT INTO Forum (Assunto, Mensagem) VALUES (@assunto, @mensagem)", conexao)
-                    adapter.InsertCommand.Parameters.AddWithValue("@assunto", txtAssunto.Text)
-                    adapter.InsertCommand.Parameters.AddWithValue("@mensagem", txtMensagem.Text)
+                    adapter.InsertCommand.Parameters.AddWithValue("@assunto", txtAssunto.Value)
+                    adapter.InsertCommand.Parameters.AddWithValue("@mensagem", txtMensagem.Value)
                     adapter.InsertCommand.ExecuteNonQuery()
 
                     adapter.SelectCommand = New SqlCommand("SELECT nome, email, instituicao, campus, cidade, curso FROM Usuario WHERE IDUsuario = @userID", conexao)
@@ -35,10 +35,10 @@ Partial Class forum
                         Dim cidade As String = reader("cidade").ToString
                         Dim curso As String = reader("curso").ToString
 
-                        Dim AssuntoEmail As String = txtAssunto.Text
-                        Dim MensagemEmail As String = String.Format("Nome: {0} <br /> Email: {1} <br /> Instituição: {2} <br /> Campus: {3} <br /> Cidade: {4} <br /> Curso: {5} <br /> Mensagem: {6}", nome, email, instituicao, campus, cidade, curso, txtMensagem.Text)
+                        Dim AssuntoEmail As String = txtAssunto.Value
+                        Dim MensagemEmail As String = String.Format("Nome: {0} <br /> Email: {1} <br /> Instituição: {2} <br /> Campus: {3} <br /> Cidade: {4} <br /> Curso: {5} <br /> Mensagem: {6}", nome, email, instituicao, campus, cidade, curso, txtMensagem.Value)
 
-                        EnviarEmail.SendEmail(AssuntoEmail, MensagemEmail, emailProjeto)
+                        EnviarEmail.SendEmail(AssuntoEmail, MensagemEmail, "Email.com")
 
                     End If
 
